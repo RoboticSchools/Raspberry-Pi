@@ -39,3 +39,18 @@ sense.show_message(text, scroll_speed=0.1)
 sense.clear()
 ```
 # Raspberry Pi - Sense HAT - 2. Display Text with colors
+1.This will display text "Hello World!" in red color over blue background.
+```python
+sense.show_message(text, text_colour=[255, 0, 0], back_colour=[0, 0, 255], scroll_speed=0.05, text_type="letter")
+```
+```python
+from sense_hat import SenseHat
+import time
+
+sense = SenseHat()
+text = "Hello World!"
+
+time.sleep(2)
+sense.show_message(text, text_colour=[255, 0, 0], back_colour=[0, 0, 255], scroll_speed=0.05, text_type="letter")
+sense.clear()
+```
