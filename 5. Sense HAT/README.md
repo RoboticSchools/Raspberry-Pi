@@ -1,4 +1,4 @@
-#Raspberry Pi - Sense HAT - 1. Display Text
+# Raspberry Pi - Sense HAT - 1. Display Text
 
 1. Start by importing the necessary libraries for the Sense HAT, including the Sense HAT module and the time module.
 ```python
@@ -38,4 +38,4 @@ time.sleep(2)
 sense.show_message(text, scroll_speed=0.1)
 sense.clear()
 ```
-#Raspberry Pi - Sense HAT - 2. Display Text with colors
+# Raspberry Pi - Sense HAT - 2. Display Text with colors
