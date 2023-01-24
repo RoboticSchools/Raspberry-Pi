@@ -1,3 +1,5 @@
+# Raspberry Pi - Sense HAT - 1. Maze game
+
 ```python
 from sense_hat import SenseHat
 from time import sleep
