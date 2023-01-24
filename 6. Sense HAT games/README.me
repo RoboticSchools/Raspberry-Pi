@@ -1,0 +1,39 @@
+This code is a maze game that uses the Sense HAT on a Raspberry Pi. The code is written in Python and utilizes the sense_hat library to interact with the Sense HAT. Here is a step-by-step explanation of the code:
+
+The first line imports the SenseHat class from the sense_hat library and the sleep function from the time library.
+
+sense = SenseHat() creates an instance of the SenseHat class, which allows the code to interact with the Sense HAT.
+
+sense.clear() clears the LED matrix on the Sense HAT.
+
+r = (255,0,0), b = (0,0,0), w = (255,255,255), g = (0,255,0) creating variables for different colors.
+
+x = 1 and y = 1 are the initial coordinates of the cursor on the LED matrix.
+
+game_over = False is a flag variable that keeps track of whether the game is over or not.
+
+maze is a two-dimensional list that represents the maze. The red color represents the walls, black color represents the empty spaces, white color represents cursor position and green represents the end point of the maze.
+
+move_marble() function takes the current x,y position of cursor and pitch and roll value from the sensor. Then it calculates the new x,y position based on the pitch and roll value.
+
+check_wall() function takes the current x,y position of cursor and new x,y position calculated by move_marble() function. It checks if the new x,y position is a wall, if true then it will return the original x,y position.
+
+check_win() function takes the current x,y position of cursor and checks if it is the end point of the maze, if true then it will show the message "You Win" on the LED matrix
+
+while not game_over: is the main loop of the game. The loop continues until the game is over, which is determined by the game_over flag variable.
+
+pitch = sense.get_orientation()['pitch'] and roll = sense.get_orientation()['roll'] are used to get the pitch and roll values from the Sense HAT's accelerometer.
+
+x,y = move_marble(pitch,roll,x,y) updates the cursor position based on the pitch and roll values.
+
+check_win(x,y) checks if the cursor has reached the end point of the maze.
+
+maze[y][x] = w changes the color of the current cursor position to white
+
+sense.set_pixels(sum(maze,[])) sets the pixels of the LED matrix to match the current state of the maze
+
+sleep(0.01) is used to slow down the loop and make the cursor movement more visible.
+
+maze[y][x] = b changes the color of the current cursor position back to black
+
+The last line of the code is the end of the while loop and the end of the game
