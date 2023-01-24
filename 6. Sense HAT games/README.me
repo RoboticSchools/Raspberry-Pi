@@ -16,6 +16,22 @@ This code is a maze game that uses the Sense HAT on a Raspberry Pi. The code is 
 
 8. move_marble() function takes the current x,y position of cursor and pitch and roll value from the sensor. Then it calculates the new x,y position based on the pitch and roll value.
 
+        1. The move_marble function takes in the pitch, roll, x, and y values of the cursor as its input arguments. The function uses these values to determine the new x and y coordinates of the cursor.
+
+        2.It first creates two new variables called new_x and new_y, which are initially set to the current x and y coordinates of the cursor.
+
+        3.Next, it uses an if-elif statement to check the pitch value of the cursor. If the pitch value is between 10 and 170, and the current x coordinate is not 0 (i.e., the cursor is not at the left edge of the matrix), it decrements the new_x value by 1. This moves the cursor one position to the left.
+
+        4.If the pitch value is between 350 and 170, and the current x coordinate is not 7 (i.e., the cursor is not at the right edge of the matrix), it increments the new_x value by 1. This moves the cursor one position to the right.
+
+        5.Next, it uses an if-elif statement to check the roll value of the cursor. If the roll value is between 10 and 170, and the current y coordinate is not 7 (i.e., the cursor is not at the bottom edge of the matrix), it increments the new_y value by 1. This moves the cursor one position down.
+
+        6.If the roll value is between 350 and 170, and the current y coordinate is not 0 (i.e., the cursor is not at the top edge of the matrix), it decrements the new_y value by 1. This moves the cursor one position up.
+
+        7.Finally, it calls the check_wall function and pass the current x,y and new_x,new_y coordinates. It returns the new coordinates which will be the new position of the cursor.
+
+        8.This function is used to move the cursor based on the pitch and roll values. It ensures that the cursor does not move out of the LED matrix and does not move into the walls of the maze.
+        
 9. check_wall() function takes the current x,y position of cursor and new x,y position calculated by move_marble() function. It checks if the new x,y position is a wall, if true then it will return the original x,y position.
 
 10. check_win() function takes the current x,y position of cursor and checks if it is the end point of the maze, if true then it will show the message "You Win" on the LED matrix
