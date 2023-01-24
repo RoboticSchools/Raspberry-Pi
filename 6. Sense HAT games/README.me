@@ -33,8 +33,30 @@ This code is a maze game that uses the Sense HAT on a Raspberry Pi. The code is 
         8.This function is used to move the cursor based on the pitch and roll values. It ensures that the cursor does not move out of the LED matrix and does not move into the walls of the maze.
         
 9. check_wall() function takes the current x,y position of cursor and new x,y position calculated by move_marble() function. It checks if the new x,y position is a wall, if true then it will return the original x,y position.
+        
+        1.The check_wall function takes in the current x, y, new_x, and new_y coordinates of the cursor as its input arguments. The function uses these values to check if the new position of the cursor is a wall or not.
 
+        2.It first checks if the new position represented by new_x and new_y is a wall or not. If the value at the new position is not red (r), it returns the new_x and new_y coordinates, meaning the cursor can move to this new position.
+
+        3.If the new position is a wall, it checks if the new_y is a wall or not. If it's not a wall, it returns the current x coordinate and the new_y coordinate. This means that the cursor can move to the new_y position but not new_x.
+
+        4.If the new_y is also a wall, it checks if the new_x is a wall or not. If it's not a wall, it returns the new_x coordinate and the current y coordinate. This means that the cursor can move to the new_x position but not new_y.
+
+        5.If both the new_x and new_y coordinates are walls, it returns the current x and y coordinates, meaning the cursor cannot move to the new position.
+
+        6.This function is used to ensure that the cursor does not move into the walls of the maze. It checks if the new position of the cursor is a wall or not and returns the new coordinates which will be the new position of the cursor. It makes sure that cursor is only moved to a valid position and not into a wall.
+        
 10. check_win() function takes the current x,y position of cursor and checks if it is the end point of the maze, if true then it will show the message "You Win" on the LED matrix
+
+        1.The check_win function takes in the x and y coordinates of the cursor as its input arguments. The function uses these values to check if the cursor has reached the end point of the maze or not.
+
+        2.It first checks if the current position represented by x and y is the end point of the maze or not. If the value at the current position is green (g), it sets the global variable game_over to True, meaning that the game is over.
+
+        3.Then it shows a message 'You Win', using the sense.show_message function, indicating that the player has won the game.
+
+        4.If the current position is not the end point, the function does nothing and the while loop continues to run.
+
+        5.This function is used to check if the cursor has reached the end point of the maze or not. It compares the current position of the cursor with the end point and if they match, it sets the game_over variable to true and shows the message 'You Win'.
 
 11. while not game_over: is the main loop of the game. The loop continues until the game is over, which is determined by the game_over flag variable.
 
